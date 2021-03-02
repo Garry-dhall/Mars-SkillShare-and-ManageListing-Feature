@@ -39,8 +39,7 @@ namespace MarsFramework.Pages
             GlobalDefinitions.ExcelLib.PopulateInCollection(Base.ExcelPath, "SignIn");
             GlobalDefinitions.driver.Navigate().GoToUrl(ExcelLib.ReadData(2, "Url"));
             SignIntab.Click();
-
-           Email.SendKeys(ExcelLib.ReadData(2, "Username"));
+            Email.SendKeys(ExcelLib.ReadData(2, "Username"));
            Password.SendKeys(ExcelLib.ReadData(2, "Password"));
            LoginBtn.Click();
            Thread.Sleep(5000);

@@ -21,7 +21,7 @@ namespace MarsFramework.Global
         #endregion
 
         #region reports
-        public static ExtentTest test;
+        public static ExtentTest logger;
         public static ExtentReports extent;
         #endregion
 
@@ -65,20 +65,22 @@ namespace MarsFramework.Global
         }
 
 
-        //[TearDown]
-        //public void TearDown()
-        //{
-        //    // Screenshot
-        //    String img = SaveScreenShotClass.SaveScreenshot(GlobalDefinitions.driver, "Report");//AddScreenCapture(@"E:\Dropbox\VisualStudio\Projects\Beehive\TestReports\ScreenShots\");
-        //    test.Log(LogStatus.Info, "Image example: " + img);
-        //    // end test. (Reports)
-        //    extent.EndTest(test);
-        //    // calling Flush writes everything to the log file (Reports)
-        //    extent.Flush();
-        //    // Close the driver :)            
-        //    GlobalDefinitions.driver.Close();
-        //    GlobalDefinitions.driver.Quit();
-        //}
+        [TearDown]
+        public void TearDown()
+        {
+            // Screenshot
+            String img = SaveScreenShotClass.SaveScreenshot(GlobalDefinitions.driver, "Report");//AddScreenCapture(@"E:\Dropbox\VisualStudio\Projects\Beehive\TestReports\ScreenShots\");
+                                                                                                //test.Log(LogStatus.Info, "Image example: " + img);
+                                                                                                //end test. (Reports)
+              //extent.EndTest(logger);
+            //extent.EndTest(ExtentTest Test);
+            //// calling Flush writes everything to the log file (Reports)
+            extent.Flush();
+            extent.Close();
+            // Close the driver :)            
+            GlobalDefinitions.driver.Close();
+            //GlobalDefinitions.driver.Quit();
+        }
         #endregion
 
     }

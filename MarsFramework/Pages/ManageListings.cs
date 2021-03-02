@@ -59,7 +59,7 @@ namespace MarsFramework.Pages
         internal void Viewlistings()
         {
             GlobalDefinitions.wait(20);
-            //Populate the Excel Sheet
+            //Populate data from Excel Sheet
             GlobalDefinitions.ExcelLib.PopulateInCollection(Base.ExcelPath, "Manage List");
             //Click on Manage Listings Link
             ManageListingsLink.Click();
@@ -186,27 +186,18 @@ namespace MarsFramework.Pages
                 DonotDelete.Click();
                 Console.WriteLine("NotDeleted");
             }
-            Thread.Sleep(5000);
-            {
+            
+            
 
 
-                //IList<IWebElement> rowsnumber = driver.FindElements(By.XPath("//*[@id = 'listing-management-section']//table//tbody//tr"));
-                //var numberofRows = noOfrows.Count;
-                //Thread.Sleep(5000);
-                for (int a = 1; a <= rows; a++)
-                {
-                    var titleName = driver.FindElement(By.XPath("//table[@class = 'ui striped table']//tr[" + a + "]//td[3]")).Text;
-                    var deleteTitle = "Selenium Webdriver";
-                    //var titleName = driver.FindElement(By.XPath("//table[@class = 'ui striped table']//tr[" + y + "]//td[3]")).Text;
-                    Assert.AreEqual(deleteTitle, titleName, "Listing Deleted");
-
+                
 
 
                 }
             }
         }
-    }
-}
+    
+
         
   
     

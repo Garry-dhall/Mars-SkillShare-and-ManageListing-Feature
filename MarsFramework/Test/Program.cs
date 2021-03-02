@@ -14,12 +14,12 @@ namespace MarsFramework
             [Test]
             public void Test()
             {
-                ShareSkill obj = new ShareSkill();
-                obj.EnterShareSkill();
-                //ManageListings Obj2 = new ManageListings();
-                 // Obj2.Viewlistings();
-                //Obj2.EditListing();
-                //Obj2.DeleteListing();
+                //ShareSkill obj = new ShareSkill();
+                //obj.EnterShareSkill();
+                ManageListings Obj2 = new ManageListings();
+                  Obj2.Viewlistings();
+                  //Obj2.EditListing();
+                  //Obj2.DeleteListing();
             }
 
 
