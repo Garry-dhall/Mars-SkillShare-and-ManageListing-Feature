@@ -21,7 +21,7 @@ namespace MarsFramework.Global
         #endregion
 
         #region reports
-        public static ExtentTest logger;
+        public static ExtentTest test;
         public static ExtentReports extent;
         #endregion
 
@@ -70,9 +70,8 @@ namespace MarsFramework.Global
         {
             // Screenshot
             String img = SaveScreenShotClass.SaveScreenshot(GlobalDefinitions.driver, "Report");//AddScreenCapture(@"E:\Dropbox\VisualStudio\Projects\Beehive\TestReports\ScreenShots\");
-                                                                                                //test.Log(LogStatus.Info, "Image example: " + img);
-                                                                                                //end test. (Reports)
-              //extent.EndTest(logger);
+              test.Log(LogStatus.Info, "Image example: " + img);
+               extent.EndTest(test);
             //extent.EndTest(ExtentTest Test);
             //// calling Flush writes everything to the log file (Reports)
             extent.Flush();

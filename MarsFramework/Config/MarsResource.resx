@@ -129,10 +129,10 @@
     <comment>If true Login, else Register</comment>
   </data>
   <data name="ReportPath" xml:space="preserve">
-    <value>MarsFramework\TestReporter\Reports\Test.html</value>
+    <value>MarsFramework\TestReports\Reports.html</value>
   </data>
   <data name="ReportXMLPath" xml:space="preserve">
-    <value>MarsFramework\TestReporter\Reports\Test.html</value>
+    <value>MarsFramework\TestReports\Reports.xml</value>
   </data>
   <data name="ScreenShotPath" xml:space="preserve">
     <value>MarsFramework\TestReporter\Screenshots\</value>

@@ -37,7 +37,7 @@ namespace MarsFramework.Pages
 
         //Enter the Title in textbox
         [FindsBy(How = How.Name, Using = "title")]
-        private IWebElement EnterTitle { get; set; }
+        private IWebElement Title { get; set; }
 
         //Click on Save button
         [FindsBy(How = How.XPath, Using = "//input[@value='Save']")]
@@ -71,7 +71,7 @@ namespace MarsFramework.Pages
             {
                 //var pagination = driver.FindElements(By.XPath("//div[@class='ui buttons semantic-ui-react-button-pagination']//button[i]")).Count;
                 var titleName = driver.FindElement(By.XPath("//table[@class = 'ui striped table']//tr[" + i + "]//td[3]")).Text;
-
+                Thread.Sleep(5000);
                 var viewSkill = driver.FindElement(By.XPath("//table[@class ='ui striped table']//tr[" + i + "]//td[8]//div//button[1]"));
 
                 var expectedValue = "Selenium";
@@ -87,15 +87,16 @@ namespace MarsFramework.Pages
                     Assert.AreEqual(viewPage, driver.Title, "Service Listing not opened");
                     Console.WriteLine("Service Listing opened");
                     Thread.Sleep(5000);
+                    //GoBack to Previous Page
+                    GlobalDefinitions.goback();
+                    Thread.Sleep(5000);
                 }
                 else
                 {
                     Console.WriteLine("Test fail");
                 }
             }
-            //GoBack to Previous Page
-            GlobalDefinitions.goback();
-            Thread.Sleep(5000);
+            
         }
         internal void EditListing()
         {
@@ -112,7 +113,7 @@ namespace MarsFramework.Pages
             for (int x = 1; x <= rows; x++)
             {
                 var titleName = driver.FindElement(By.XPath("//table[@class = 'ui striped table']//tr[" + x + "]//td[3]")).Text;
-
+                Thread.Sleep(5000);
                 var edit = driver.FindElement(By.XPath("//table[@class ='ui striped table']//tr[" + x + "]//td[8]//div//button[2]"));
 
                 if (titleName == "Selenium")
@@ -123,20 +124,22 @@ namespace MarsFramework.Pages
                     edit.Click();
                     Thread.Sleep(5000);
                     var serviceListing = "ServiceListing";
-                    Assert.AreEqual(serviceListing, driver.Title, "Service listing opened");
+                    Assert.AreEqual(serviceListing, driver.Title, "Service listing not opened");
                     Console.WriteLine("Edit clicked");
-
+                    break;
                 }
                 else
                 {
                     Console.WriteLine("Test fail");
                 }
             }
+            Thread.Sleep(5000);
+            Title.Click();
             //CLear the current tilte
-            EnterTitle.Clear();
+            Title.Clear();
 
             //Edit the new Title
-            EnterTitle.SendKeys(ExcelLib.ReadData(2, "Title"));
+            Title.SendKeys(ExcelLib.ReadData(2, "SKillTitle"));
 
             //CLick on save to save updated title
             Save.Click();
@@ -159,16 +162,15 @@ namespace MarsFramework.Pages
             {
                 var titleName = driver.FindElement(By.XPath("//table[@class = 'ui striped table']//tr[" + y + "]//td[3]")).Text;
 
-                var edit = driver.FindElement(By.XPath("//table[@class ='ui striped table']//tr[" + y + "]//td[8]//div//button[3]"));
+                var delete = driver.FindElement(By.XPath("//table[@class ='ui striped table']//tr[" + y + "]//td[8]//div//button[3]"));
                 Thread.Sleep(5000);
 
                 if (titleName == "Selenium WebDriver")
                 {
                     //GlobalDefinitions.WaitForElement(driver, By.XPath("//table[@class ='ui striped table']//tr["+x+"]//td[8]//div//button[1]//i[1]"),10);
-                    edit.Click();
-                    Thread.Sleep(5000);
+                    delete.Click();
                     Console.WriteLine("Delete clicked");
-
+                    break;
                 }
                 else
                 {
@@ -186,16 +188,12 @@ namespace MarsFramework.Pages
                 DonotDelete.Click();
                 Console.WriteLine("NotDeleted");
             }
-            
-            
-
-
-                
-
-
-                }
-            }
+           
         }
+            
+    }
+        
+}
     
 
         
